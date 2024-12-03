@@ -13,6 +13,8 @@ class Settings(object):
     DB_PASS: str = os.environ.get("DB_PASS")
     DB_NAME: str = os.environ.get("DB_NAME")
     DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    SECRET_KEY: str = os.environ.get("SECRET_KEY")
+    ALGORITHM: str = os.environ.get("ALGORITHM")
 
 
 settings = Settings()
