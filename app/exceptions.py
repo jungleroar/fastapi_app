@@ -26,4 +26,11 @@ IncorrectTokenFormatException = HTTPException(
     detail="Некорректный формат токена.",
 )
 
-UserIsNotPresentException = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+UserIsNotPresentException = HTTPException(
+    status_code=status.HTTP_401_UNAUTHORIZED
+)
+
+RoomCannotBeBooked = HTTPException(
+    status_code=status.HTTP_409_CONFLICT,
+    detail="Не осталось свободных номеров."
+)
