@@ -4,11 +4,17 @@ from pydantic import BaseModel
 
 from app.bookings.router import router as router_bookings
 from app.users.router import router as router_users
+from app.hotels.router import router as router_hotels
+from app.hotels.rooms.router import router as rooms_router
+from app.pages.router import router as pages_router
 
 app = FastAPI()
 
 app.include_router(router=router_users)
 app.include_router(router=router_bookings)
+app.include_router(router=router_hotels)
+app.include_router(router=rooms_router)
+app.include_router(router=pages_router)
 
 
 class HotelsSearchArgs:
@@ -32,6 +38,6 @@ class SHotel(BaseModel):
     stars: int
 
 
-@app.get("/hotels")
-def get_hotels(search_args: HotelsSearchArgs = Depends()):
-    return search_args
+# @app.get("/hotels")
+# def get_hotels(search_args: HotelsSearchArgs = Depends()):
+#     return search_args

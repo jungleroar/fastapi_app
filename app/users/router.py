@@ -17,7 +17,7 @@ from app.exceptions import IncorrectEmailOrPasswordException
 
 router = APIRouter(
     prefix="/auth",
-    tags=["Auth and Users"],
+    tags=["Пользователи"],
 )
 
 
