@@ -11,8 +11,15 @@ class HotelsDAO(BaseDAO):
     model = Hotels
 
     @classmethod
-    async def search_for_hotels():
-        pass
+    async def search_for_hotels(cls,
+                                location: str,
+                                date_from: date,
+                                date_to: date,
+                                ):
+        async with async_session_maker() as session:
+            pass
+
+
     # @classmethod
     # async def find_hotels(cls,
     #               hotel_id: int,

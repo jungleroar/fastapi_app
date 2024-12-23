@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.bookings.router import router as router_bookings
 from app.users.router import router as router_users
@@ -18,3 +19,15 @@ app.include_router(router=router_hotels)
 app.include_router(router=rooms_router)
 app.include_router(router=pages_router)
 app.include_router(router=images_router)
+
+origins = [
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)

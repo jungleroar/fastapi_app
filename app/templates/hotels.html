@@ -9,7 +9,14 @@
 
 <body>
     {% for hotel in hotels %}
-    {{hotel.name}} <br>
+    <div style="display: flex; margin-bottom: 10px; margin-left: 20px;">
+        <img src="{{ url_for('static', path='images/' + hotel.image_id|string + '.webp')}}" alt="Photo" width="200">
+        <div>
+            <h1>{{ hotel.name }}</h1>
+            <h4>{{ hotel.location }}</h4>
+        </div>
+    </div>
+
     {% endfor %}
 </body>
 
