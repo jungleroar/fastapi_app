@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
 from app.bookings.router import router as router_bookings
 from app.users.router import router as router_users
@@ -8,6 +9,12 @@ from app.hotels.router import router as router_hotels
 from app.hotels.rooms.router import router as rooms_router
 from app.pages.router import router as pages_router
 from app.images.router import router as images_router
+
+from fastapi_cache import FastAPICache
+from fastapi_cache.backends.redis import RedisBackend
+from fastapi_cache.decorator import cache
+
+from redis import asyncio as aioredis
 
 app = FastAPI()
 
@@ -31,3 +38,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.on_event("startup")
+async def startup():
+    redis = aioredis.from_url("redis://localhost:6379", encoding="utf8", decode_responses=True)
+    FastAPICache.init(RedisBackend(redis), prefix="cache")
