@@ -16,5 +16,10 @@ class Settings(object):
     SECRET_KEY: str = os.environ.get("SECRET_KEY")
     ALGORITHM: str = os.environ.get("ALGORITHM")
 
+    SMTP_HOST: str = os.environ.get("SMTP_HOST")
+    SMTP_PORT: int = os.environ.get("SMTP_PORT")
+    SMTP_USER: str = os.environ.get("SMTP_USER")
+    SMTP_PASS: str = os.environ.get("SMTP_PASS")
+
 
 settings = Settings()
