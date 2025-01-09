@@ -7,6 +7,7 @@ from app.users.models import Users
 from app.users.dependencies import get_current_user
 from datetime import date
 from pydantic import parse_obj_as
+from pydantic import TypeAdapter
 from app.tasks.tasks import send_booking_confirmation_email
 
 router = APIRouter(
@@ -29,6 +30,7 @@ async def add_booking(room_id: int,
     if not booking:
         raise RoomCannotBeBooked
     
-    booking_dict = parse_obj_as(SBooking, booking).dict()
-    send_booking_confirmation_email.delay(booking_dict, user.email)
-    return booking_dict
+    booking_dict = booking.__dict__
+    validated_booking = TypeAdapter(SBooking).validate_python(booking_dict)
+    send_booking_confirmation_email.delay(validated_booking.dict(), user.email)
+    return validated_booking
