@@ -9,6 +9,7 @@ from sqlalchemy import Computed
 from app.database import Base
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
+from sqlalchemy.orm import relationship
 
 
 class Bookings(Base):
@@ -22,4 +23,8 @@ class Bookings(Base):
     price: Mapped[int] = mapped_column(nullable=False)
     total_cost: Mapped[int] = mapped_column(Computed("(date_to - date_from) * price"))
     total_days: Mapped[int] = mapped_column(Computed("date_to - date_from"))
-    
+    user: Mapped["Users"] = relationship(back_populates='booking')
+    room: Mapped["Rooms"] = relationship(back_populates="booking")
+
+    def __str__(self):
+        return f"Бронь №{self.id}"

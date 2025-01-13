@@ -15,6 +15,10 @@ from fastapi_cache.backends.redis import RedisBackend
 from fastapi_cache.decorator import cache
 
 from redis import asyncio as aioredis
+from sqladmin import Admin, ModelView
+from app.database import engine
+from app.admin.views import UserAdmin, BookingsAdmin
+
 
 app = FastAPI()
 
@@ -44,3 +48,9 @@ app.add_middleware(
 async def startup():
     redis = aioredis.from_url("redis://localhost:6379", encoding="utf8", decode_responses=True)
     FastAPICache.init(RedisBackend(redis), prefix="cache")
+
+
+admin = Admin(app, engine)
+
+admin.add_view(UserAdmin)
+admin.add_view(BookingsAdmin)
