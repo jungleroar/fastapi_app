@@ -17,7 +17,7 @@ from fastapi_cache.decorator import cache
 from redis import asyncio as aioredis
 from sqladmin import Admin, ModelView
 from app.database import engine
-from app.admin.views import UserAdmin, BookingsAdmin
+from app.admin.views import UserAdmin, BookingsAdmin, RoomsAdmin, HotelsAdmin
 
 
 app = FastAPI()
@@ -54,3 +54,5 @@ admin = Admin(app, engine)
 
 admin.add_view(UserAdmin)
 admin.add_view(BookingsAdmin)
+admin.add_view(RoomsAdmin)
+admin.add_view(HotelsAdmin)

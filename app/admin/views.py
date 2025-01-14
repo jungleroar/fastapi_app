@@ -33,3 +33,4 @@ class RoomsAdmin(ModelView, model=Rooms):
     name = "Номер"
     name_plural = "Номера"
     icon = "fa-solid fa-bed"
+    
