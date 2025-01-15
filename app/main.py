@@ -18,6 +18,7 @@ from redis import asyncio as aioredis
 from sqladmin import Admin, ModelView
 from app.database import engine
 from app.admin.views import UserAdmin, BookingsAdmin, RoomsAdmin, HotelsAdmin
+from app.admin.auth import authentication_backend
 
 
 app = FastAPI()
@@ -50,7 +51,7 @@ async def startup():
     FastAPICache.init(RedisBackend(redis), prefix="cache")
 
 
-admin = Admin(app, engine)
+admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 admin.add_view(UserAdmin)
 admin.add_view(BookingsAdmin)
