@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "email": "john.doe@example.com",
+        "hashed_password": "hashed_password_1"
+    },
+    {
+        "id": 2,
+        "email": "jane.smith@example.com",
+        "hashed_password": "hashed_password_2"
+    },
+    {
+        "id": 3,
+        "email": "mike.williams@example.com",
+        "hashed_password": "hashed_password_3"
+    }
+]

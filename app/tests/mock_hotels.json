@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Ocean View Hotel",
+        "location": "Seaside, CA",
+        "services": {
+            "wifi": true,
+            "pool": true,
+            "restaurant": true
+        },
+        "rooms_quantity": 10,
+        "image_id": 1
+    },
+    {
+        "id": 2,
+        "name": "Mountain Retreat Lodge",
+        "location": "Mountainside, CO",
+        "services": {
+            "wifi": true,
+            "spa": true,
+            "hiking": true
+        },
+        "rooms_quantity": 5,
+        "image_id": 2
+    }
+]
