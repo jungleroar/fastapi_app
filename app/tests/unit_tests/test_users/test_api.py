@@ -1,7 +1,13 @@
-import time
+from httpx import AsyncClient
+from app.tests.conftest import ac
+import pytest
 
-def test_abc():
-    assert 1 == 1
-    
-def test_2():
-    assert 6 > 7
+
+@pytest.mark.asyncio
+async def test_register_user(ac: AsyncClient):
+    response = await ac.post("/auth/register", json={
+        "email": "kot@pes.com",
+        "password": "kotopes",
+    })
+
+    assert response.status_code == 200
