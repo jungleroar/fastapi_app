@@ -30,7 +30,7 @@ class Settings(object):
     SMTP_USER: str = os.environ.get("SMTP_USER")
     SMTP_PASS: str = os.environ.get("SMTP_PASS")
 
-    MODE: Literal["DEV", "TEST", "PROD"] = "DEV"
+    MODE: Literal["DEV", "TEST", "PROD"] = os.environ.get("MODE")
 
 
 settings = Settings()
