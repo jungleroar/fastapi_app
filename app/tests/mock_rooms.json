@@ -1,6 +1,5 @@
 [
     {
-        "id": 1,
         "hotel_id": 1,
         "name": "Standard Room",
         "description": "Standard double bed room with ocean view.",
@@ -13,7 +12,6 @@
         "image_id": 3
     },
     {
-        "id": 2,
         "hotel_id": 1,
         "name": "Suite",
         "description": "Luxury suite with private balcony and ocean view.",
@@ -27,7 +25,6 @@
         "image_id": 4
     },
     {
-        "id": 3,
         "hotel_id": 2,
         "name": "Cabin",
         "description": "Cozy cabin in the mountains.",

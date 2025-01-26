@@ -1,6 +1,5 @@
 [
     {
-        "id": 1,
         "name": "Ocean View Hotel",
         "location": "Seaside, CA",
         "services": {
@@ -12,7 +11,6 @@
         "image_id": 1
     },
     {
-        "id": 2,
         "name": "Mountain Retreat Lodge",
         "location": "Mountainside, CO",
         "services": {
