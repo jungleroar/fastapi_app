@@ -31,6 +31,7 @@ class Settings(object):
     SMTP_PASS: str = os.environ.get("SMTP_PASS")
 
     MODE: Literal["DEV", "TEST", "PROD"] = os.environ.get("MODE")
+    LOG_LEVEL: str = os.environ.get("LOG_LEVEL")
 
 
 settings = Settings()
