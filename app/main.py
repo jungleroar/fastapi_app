@@ -1,25 +1,20 @@
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
-
-from app.bookings.router import router as router_bookings
-from app.users.router import router as router_users
-from app.hotels.router import router as router_hotels
-from app.hotels.rooms.router import router as rooms_router
-from app.pages.router import router as pages_router
-from app.images.router import router as images_router
-
+from fastapi.staticfiles import StaticFiles
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
-from fastapi_cache.decorator import cache
-
 from redis import asyncio as aioredis
-from sqladmin import Admin, ModelView
-from app.database import engine
-from app.admin.views import UserAdmin, BookingsAdmin, RoomsAdmin, HotelsAdmin
-from app.admin.auth import authentication_backend
+from sqladmin import Admin
 
+from app.admin.auth import authentication_backend
+from app.admin.views import BookingsAdmin, HotelsAdmin, RoomsAdmin, UserAdmin
+from app.bookings.router import router as router_bookings
+from app.database import engine
+from app.hotels.rooms.router import router as rooms_router
+from app.hotels.router import router as router_hotels
+from app.images.router import router as images_router
+from app.pages.router import router as pages_router
+from app.users.router import router as router_users
 
 app = FastAPI()
 
