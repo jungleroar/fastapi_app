@@ -1,5 +1,6 @@
 from app.hotels.router import router
 from app.hotels.rooms.dao import RoomsDAO
+from app.hawk import hawk
 
 
 @router.get("/{hotel_id}/rooms")

@@ -32,6 +32,7 @@ class Settings(object):
 
     MODE: Literal["DEV", "TEST", "PROD"] = os.environ.get("MODE")
     LOG_LEVEL: str = os.environ.get("LOG_LEVEL")
+    HAWK_TOKEN: str = os.environ.get("HAWK_TOKEN")
 
 
 settings = Settings()

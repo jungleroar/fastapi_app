@@ -5,6 +5,7 @@ from app.hotels.schemas import SHotel
 from fastapi_cache.decorator import cache
 from pydantic import parse_obj_as
 import asyncio
+from app.hawk import hawk
 
 router = APIRouter(prefix="/hotels",
                    tags=["Отели и номера"])
