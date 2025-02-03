@@ -4,7 +4,7 @@ from typing import Literal
 from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-load_dotenv(os.path.join(basedir, '.env'))
+load_dotenv(dotenv_path=os.path.join(basedir, '.env'))
 
 
 class Settings(object):
