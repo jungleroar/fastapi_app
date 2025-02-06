@@ -1,4 +1,5 @@
 .env
+.env-non-dev
 .venv/
 __pycache__/
 commands.txt
