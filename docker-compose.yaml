@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   db:
-    image: postgres:15
+    image: postgres
     container_name: booking_db
     env_file:
       - .env-non-dev
@@ -9,7 +9,7 @@ services:
       - 6666:5432
 
   redis:
-    image: redis:7
+    image: redis
     container_name: booking_redis
 
   booking:
