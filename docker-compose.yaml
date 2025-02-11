@@ -7,6 +7,11 @@ services:
       - .env-non-dev
     ports:
       - 6666:5432
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   redis:
     image: redis
@@ -19,8 +24,10 @@ services:
     env_file:
       - .env-non-dev
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy # Ждём, пока PostgreSQL будет готов
+      redis:
+        condition: service_started
     command: [ "/booking/docker/app.sh" ]
     ports:
       - 7777:8000
