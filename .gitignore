@@ -3,4 +3,9 @@
 .venv/
 __pycache__/
 commands.txt
+
 app/static/*
+!app/static/.gitkeep
+
+migrations/versions/*
+!migrations/versions/.gitkeep
