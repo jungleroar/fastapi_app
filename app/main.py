@@ -16,6 +16,7 @@ from app.hotels.router import router as router_hotels
 from app.images.router import router as images_router
 from app.pages.router import router as pages_router
 from app.users.router import router as router_users
+from prometheus_fastapi_instrumentator import Instrumentator
 from app.logger import logger
 
 app = FastAPI()
@@ -46,6 +47,13 @@ app.add_middleware(
 async def startup():
     redis = aioredis.from_url("redis://redis:6379", encoding="utf8", decode_responses=True)
     FastAPICache.init(RedisBackend(redis), prefix="cache")
+
+
+instrumentator = Instrumentator(
+    should_group_status_codes=False,
+    excluded_handlers=[".*admin.*", "/metrics"],
+)
+instrumentator.instrument(app=app).expose(app)
 
 
 admin = Admin(app, engine, authentication_backend=authentication_backend)
